@@ -1,5 +1,5 @@
-FROM ubuntu:quantal
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+FROM ubuntu:latest
+MAINTAINER Praful Rana <praful@runnable.com>
 
 # Install packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen
@@ -20,7 +20,7 @@ ADD create_db.sh /create_db.sh
 RUN chmod 755 /*.sh
 
 # Configure /app folder with sample app
-RUN git clone https://github.com/fermayo/hello-world-lamp.git /app
+RUN git clone https://github.com/prafulrana/php.git /app
 RUN mkdir -p /app && rm -fr /var/www && ln -s /app /var/www
 
 EXPOSE 80 3306
